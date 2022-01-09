@@ -17,7 +17,7 @@ class Classes2 extends StatefulWidget {
 class _NotafloState extends State<Classes2> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String dropdownValue = 'One';
+  String dropdownValue = "select class";
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +164,12 @@ class _NotafloState extends State<Classes2> {
                 child: Padding(
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: DropdownButton(
-                      value: "United Kingdom",
+                      hint: dropdownValue == "select class"
+                          ? const Text('Dropdown')
+                          : Text(
+                              dropdownValue,
+                              style: const TextStyle(color: Colors.blue),
+                            ),
                       items: const [
                         //add items in the dropdown
                         DropdownMenuItem(
@@ -180,12 +185,14 @@ class _NotafloState extends State<Classes2> {
                       ],
                       onChanged: (value) {
                         //get value when changed
-                        print("You have selected $value");
+                        setState(() {
+                          value = dropdownValue;
+                        });
                       },
                       icon: const Padding(
                           //Icon at tail, arrow bottom is default icon
                           padding: EdgeInsets.only(left: 20),
-                          child: Icon(Icons.align_horizontal_left_outlined)),
+                          child: Icon(Icons.arrow_circle_down_sharp)),
                       iconEnabledColor: Colors.black, //Icon color
                       style: const TextStyle(
                           //te
