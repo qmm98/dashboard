@@ -2,6 +2,7 @@
 
 import 'package:mongo_dart/mongo_dart.dart';
 import 'main.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DBConnection {
   static int ans2 = 2;
@@ -15,9 +16,19 @@ class DBConnection {
 
     try {
       await db!.open();
-      print('connected');
+      Fluttertoast.showToast(
+          msg: "Connected",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          fontSize: 16.0);
     } catch (e) {
-      print(e);
+      Fluttertoast.showToast(
+          msg: "Could not connect to DB",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          fontSize: 16.0);
     }
   }
 
@@ -26,13 +37,21 @@ class DBConnection {
         .find(where.eq('email', id).and(where.eq('pass', pass)))
         .toList();
 
-    print(idauther);
     if (idauther.isNotEmpty) {
-      print(1);
+      //returning 1 if id pass found in stu
       ans2 = 1;
     } else if (idauther.isEmpty) {
-      print(2);
-      ans2 = 2;
+      coll = db!.collection('Faculty');
+      idauther = await coll
+          .find(where.eq('email', id).and(where.eq('pass', pass)))
+          .toList();
+      if (idauther.isEmpty) {
+        // returning 2 if id pass not found in stu or faculty
+        ans2 = 2;
+      } else {
+        //returning 3 if id pass found in faculty
+        ans2 = 3;
+      }
     }
     return ans2;
     await db!.close();

@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loginapp/classes.dart';
 import 'package:loginapp/notifications.dart';
 
@@ -25,14 +26,22 @@ class _NotafloState extends State<Dashboard> {
           padding: const EdgeInsets.only(top: 30),
           children: [
             ListTile(
-              title: const Image(image: AssetImage('assets/logo.png')),
+              title: const Image(
+                image: AssetImage('assets/logo.png'),
+              ),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Dashboard()),
+                );
               },
             ),
             ListTile(
               title: const Text('Notifications'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -43,6 +52,7 @@ class _NotafloState extends State<Dashboard> {
             ListTile(
               title: const Text('Classes'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -53,6 +63,7 @@ class _NotafloState extends State<Dashboard> {
             ListTile(
               title: const Text('Chat-Rooms'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -63,6 +74,7 @@ class _NotafloState extends State<Dashboard> {
             ListTile(
               title: const Text('Course Management'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -73,6 +85,7 @@ class _NotafloState extends State<Dashboard> {
             ListTile(
               title: const Text('Feedback'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -83,6 +96,7 @@ class _NotafloState extends State<Dashboard> {
             ListTile(
               title: const Text('Preferences'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -120,6 +134,7 @@ class _NotafloState extends State<Dashboard> {
                         size: 30,
                       ),
                       onPressed: () async {
+                        HapticFeedback.lightImpact();
                         scaffoldKey.currentState!.openDrawer();
                       },
                     ),
@@ -127,7 +142,7 @@ class _NotafloState extends State<Dashboard> {
                   const Align(
                     alignment: AlignmentDirectional(0, 0),
                     child: Text(
-                      'Dashboard1',
+                      'Dashboard',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,

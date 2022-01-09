@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loginapp/classes.dart';
 import 'package:loginapp/dashboard.dart';
 import 'dashboard.dart';
@@ -30,6 +31,7 @@ class _NotafloState extends State<Notaflo> {
                 image: AssetImage('assets/logo.png'),
               ),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -40,6 +42,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Notifications'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -50,6 +53,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Classes'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -60,6 +64,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Chat-Rooms'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -70,6 +75,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Course Management'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -80,6 +86,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Feedback'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -90,6 +97,7 @@ class _NotafloState extends State<Notaflo> {
             ListTile(
               title: const Text('Preferences'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -127,6 +135,7 @@ class _NotafloState extends State<Notaflo> {
                         size: 30,
                       ),
                       onPressed: () async {
+                        HapticFeedback.lightImpact();
                         scaffoldKey.currentState!.openDrawer();
                       },
                     ),

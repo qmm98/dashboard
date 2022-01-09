@@ -126,6 +126,17 @@ class _LoginPageState extends State<LoginPage> {
                                   } else if (ans == 2) {
                                     dialogs d1 = dialogs();
                                     d1.showAlertDialog(context);
+                                  } else if (ans == 3) {
+                                    /* Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => WillPopScope(
+                                              onWillPop: () async => false,
+                                              child: Dashboard())),
+                                    ); 
+                                    
+                                    PAGEROUTE TO FACULTY LOGIN
+                                    */
                                   } else {
                                     dialogs d1 = dialogs();
                                     d1.showAlertDialog2(context);

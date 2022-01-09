@@ -35,6 +35,7 @@ class _NotafloState extends State<Classes2> {
                 image: AssetImage('assets/logo.png'),
               ),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -45,6 +46,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Notifications'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -55,6 +57,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Classes'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -65,6 +68,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Chat-Rooms'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -75,6 +79,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Course Management'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -85,6 +90,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Feedback'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -95,6 +101,7 @@ class _NotafloState extends State<Classes2> {
             ListTile(
               title: const Text('Preferences'),
               onTap: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -168,7 +175,7 @@ class _NotafloState extends State<Classes2> {
                     child: DropdownButton(
                       onTap: () => HapticFeedback.lightImpact(),
                       hint: dropdownValue == "select class"
-                          ? const Text('Dropdown')
+                          ? const Text('Select Class')
                           : Text(
                               dropdownValue,
                               style: const TextStyle(color: Colors.black),
