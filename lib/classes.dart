@@ -185,7 +185,7 @@ class _NotafloState extends State<Classes2> {
                       icon: const Padding(
                           //Icon at tail, arrow bottom is default icon
                           padding: EdgeInsets.only(left: 20),
-                          child: Icon(Icons.arrow_circle_down_sharp)),
+                          child: Icon(Icons.align_horizontal_left_outlined)),
                       iconEnabledColor: Colors.black, //Icon color
                       style: const TextStyle(
                           //te
