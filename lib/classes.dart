@@ -1,6 +1,7 @@
-// ignore_for_file: avoid_print, unused_import
+// ignore_for_file: avoid_print, unused_import, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loginapp/dashboard.dart';
 import 'package:loginapp/notifications.dart';
 import 'dashboard.dart';
@@ -130,6 +131,7 @@ class _NotafloState extends State<Classes2> {
                       size: 30,
                     ),
                     onPressed: () async {
+                      HapticFeedback.lightImpact();
                       scaffoldKey.currentState!.openDrawer();
                     },
                   ),
@@ -164,29 +166,45 @@ class _NotafloState extends State<Classes2> {
                 child: Padding(
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: DropdownButton(
+                      onTap: () => HapticFeedback.lightImpact(),
                       hint: dropdownValue == "select class"
                           ? const Text('Dropdown')
                           : Text(
                               dropdownValue,
-                              style: const TextStyle(color: Colors.blue),
+                              style: const TextStyle(color: Colors.black),
                             ),
-                      items: const [
+                      items: [
                         //add items in the dropdown
                         DropdownMenuItem(
-                          child: Text("United Kingdom"),
-                          value: "United Kingdom",
+                          onTap: () => HapticFeedback.lightImpact(),
+                          child: Text("Monday"),
+                          value: "Monday",
                         ),
                         DropdownMenuItem(
-                            child: Text("Canada"), value: "Canada"),
+                            onTap: () => HapticFeedback.lightImpact(),
+                            child: Text("Tuesday"),
+                            value: "Tuesday"),
                         DropdownMenuItem(
-                          child: Text("Russia"),
-                          value: "Russia",
-                        )
+                          onTap: () => HapticFeedback.lightImpact(),
+                          child: Text("Wednesday"),
+                          value: "Wednesday",
+                        ),
+                        DropdownMenuItem(
+                          onTap: () => HapticFeedback.lightImpact(),
+                          child: Text("Thursday"),
+                          value: "Thursday",
+                        ),
+                        DropdownMenuItem(
+                          onTap: () => HapticFeedback.lightImpact(),
+                          child: Text("Friday"),
+                          value: "Friday",
+                        ),
                       ],
                       onChanged: (value) {
+                        //HapticFeedback.lightImpact();
                         //get value when changed
                         setState(() {
-                          value = dropdownValue;
+                          dropdownValue = value.toString();
                         });
                       },
                       icon: const Padding(

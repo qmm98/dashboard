@@ -127,7 +127,7 @@ class _NotafloState extends State<Dashboard> {
                   const Align(
                     alignment: AlignmentDirectional(0, 0),
                     child: Text(
-                      'Dashboard',
+                      'Dashboard1',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
