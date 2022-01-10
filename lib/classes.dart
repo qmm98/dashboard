@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unused_import, prefer_const_constructors
+// ignore_for_file: avoid_print, unused_import, prefer_const_constructors, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +19,9 @@ class _NotafloState extends State<Classes2> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   String dropdownValue = "select class";
+  static int? day;
+  static String? dept;
+  static var display;
 
   @override
   Widget build(BuildContext context) {
@@ -183,31 +186,48 @@ class _NotafloState extends State<Classes2> {
                       items: [
                         //add items in the dropdown
                         DropdownMenuItem(
-                          onTap: () => HapticFeedback.lightImpact(),
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            day = 1;
+                          },
                           child: Text("Monday"),
                           value: "Monday",
                         ),
                         DropdownMenuItem(
-                            onTap: () => HapticFeedback.lightImpact(),
+                            onTap: () {
+                              HapticFeedback.lightImpact();
+                              day = 2;
+                            },
                             child: Text("Tuesday"),
                             value: "Tuesday"),
                         DropdownMenuItem(
-                          onTap: () => HapticFeedback.lightImpact(),
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            day = 3;
+                          },
                           child: Text("Wednesday"),
                           value: "Wednesday",
                         ),
                         DropdownMenuItem(
-                          onTap: () => HapticFeedback.lightImpact(),
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            day = 4;
+                          },
                           child: Text("Thursday"),
                           value: "Thursday",
                         ),
                         DropdownMenuItem(
-                          onTap: () => HapticFeedback.lightImpact(),
+                          onTap: () {
+                            HapticFeedback.lightImpact();
+                            day = 5;
+                          },
                           child: Text("Friday"),
                           value: "Friday",
                         ),
                       ],
-                      onChanged: (value) {
+                      onChanged: (value) async {
+                        await DBConnection.connect();
+                        display = await DBConnection.gettt(day, dept);
                         //HapticFeedback.lightImpact();
                         //get value when changed
                         setState(() {
@@ -233,14 +253,23 @@ class _NotafloState extends State<Classes2> {
           Align(
             alignment: const AlignmentDirectional(0, 0.55),
             child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              margin: const EdgeInsets.only(top: 235, bottom: 15),
-              decoration: BoxDecoration(
-                color: const Color(0x95282828),
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
+                width: double.infinity,
+                height: double.infinity,
+                margin: const EdgeInsets.only(top: 235, bottom: 15),
+                decoration: BoxDecoration(
+                  color: const Color(0x95282828),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: display.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        color: Colors.amber,
+                        child: Center(child: Text('Entry ${display[index]}')),
+                      );
+                    })),
           )
         ],
       ),

@@ -1,4 +1,4 @@
-// ignore_for_file: import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print
+// ignore_for_file: import_of_legacy_library_into_null_safe, unnecessary_null_comparison, avoid_print, unused_local_variable
 
 import 'package:mongo_dart/mongo_dart.dart';
 import 'main.dart';
@@ -45,6 +45,7 @@ class DBConnection {
       idauther = await coll
           .find(where.eq('email', id).and(where.eq('pass', pass)))
           .toList();
+      await db!.close();
       if (idauther.isEmpty) {
         // returning 2 if id pass not found in stu or faculty
         ans2 = 2;
@@ -54,6 +55,15 @@ class DBConnection {
       }
     }
     return ans2;
-    await db!.close();
+  }
+
+  static gettt(int? day, String? dept) async {
+    coll = db!.collection('Time_table');
+    var ttgetter = await coll
+        .find(where.eq('Day', 'Monday').and(where.eq('Department', 'SE_7')))
+        .toList();
+
+    print(ttgetter);
+    return ttgetter;
   }
 }

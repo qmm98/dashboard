@@ -31,7 +31,9 @@ dependencies:
     sdk: flutter
   fluttertoast: ^8.0.8
   mongo_dart: ^0.4.4
-  
+  black_hole_flutter: ^0.3.5
+  supercharged: ^2.1.1
+  timetable: ^1.0.0-alpha.6
   toast: ^0.1.5
 
 
@@ -39,6 +41,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   
+ 
   
 
 dev_dependencies:
