@@ -20,8 +20,13 @@ class _NotafloState extends State<Classes2> {
 
   String dropdownValue = "select class";
   static int? day;
-  static String? dept;
-  static var display;
+  static List? display;
+
+  Future<List> gettt() {
+    return Future.delayed(Duration(seconds: 5), () {
+      return DBConnection.gettt(day, 'monday');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -226,13 +231,13 @@ class _NotafloState extends State<Classes2> {
                         ),
                       ],
                       onChanged: (value) async {
-                        await DBConnection.connect();
-                        display = await DBConnection.gettt(day, dept);
                         //HapticFeedback.lightImpact();
                         //get value when changed
                         setState(() {
                           dropdownValue = value.toString();
                         });
+                        await DBConnection.connect();
+                        display = await DBConnection.gettt(day, 'SE_7');
                       },
                       icon: const Padding(
                           //Icon at tail, arrow bottom is default icon
@@ -260,16 +265,27 @@ class _NotafloState extends State<Classes2> {
                   color: const Color(0x95282828),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: display.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 50,
-                        color: Colors.amber,
-                        child: Center(child: Text('Entry ${display[index]}')),
-                      );
-                    })),
+                child: FutureBuilder<List>(
+                  future: gettt(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Center(
+                          child: ListView.builder(
+                              padding: const EdgeInsets.all(8),
+                              itemCount: 5,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  height: 50,
+                                  color: Colors.amber,
+                                  child:
+                                      Center(child: Text(display.toString())),
+                                );
+                              }));
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                )),
           )
         ],
       ),
