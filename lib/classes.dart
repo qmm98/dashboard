@@ -260,7 +260,7 @@ class _NotafloState extends State<Classes2> {
             child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                margin: const EdgeInsets.only(top: 235, bottom: 15),
+                margin: const EdgeInsets.only(top: 210, bottom: 15),
                 decoration: BoxDecoration(
                   color: const Color(0x95282828),
                   borderRadius: BorderRadius.circular(50),
@@ -272,17 +272,30 @@ class _NotafloState extends State<Classes2> {
                       return Center(
                           child: ListView.builder(
                               padding: const EdgeInsets.all(8),
-                              itemCount: 5,
+                              itemCount: display?.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Container(
-                                  height: 50,
-                                  color: Colors.amber,
+                                  padding: EdgeInsets.all(50),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.amber,
+                                  ),
+                                  height: 150,
                                   child:
                                       Center(child: Text(display.toString())),
                                 );
                               }));
-                    } else {
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.active) {
+                      return Center(child: Text('Select Class'));
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.none) {
+                      return Center(child: Text('Select Class'));
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
                       return Center(child: CircularProgressIndicator());
+                    } else {
+                      return Text('select class');
                     }
                   },
                 )),

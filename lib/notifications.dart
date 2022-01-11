@@ -158,7 +158,8 @@ class _NotafloState extends State<Notaflo> {
             alignment: const AlignmentDirectional(0, 0.68),
             child: Container(
               width: double.infinity,
-              height: 800,
+              height: double.infinity,
+              margin: const EdgeInsets.only(top: 150, bottom: 15),
               decoration: BoxDecoration(
                 color: const Color(0x95282828),
                 borderRadius: BorderRadius.circular(50),

@@ -16,19 +16,8 @@ class DBConnection {
 
     try {
       await db!.open();
-      Fluttertoast.showToast(
-          msg: "Connected",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          fontSize: 16.0);
     } catch (e) {
-      Fluttertoast.showToast(
-          msg: "Could not connect to DB",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          fontSize: 16.0);
+      return e;
     }
   }
 
@@ -60,29 +49,43 @@ class DBConnection {
   static gettt(int? day, String? dept) async {
     coll = db!.collection('Time_table');
     if (day == 1) {
-      List ttgetter = await coll
-          .find(where.eq('Day', 'Monday').and(where.eq('Department', dept)))
+      var ttgetter = await coll
+          .find(where.eq('Day', 'Monday').fields(
+            ['Subject_and_time'],
+          ).excludeFields(['_id']).and(where.eq('Department', dept)))
           .toList();
 
       return ttgetter;
     } else if (day == 2) {
       var ttgetter = await coll
-          .find(where.eq('Day', 'Tuesday').and(where.eq('Department', dept)))
+          .find(where
+              .eq('Day', 'Tuesday')
+              .fields(['Subject_and_time']).excludeFields(['_id']).and(
+                  where.eq('Department', dept)))
           .toList();
       return ttgetter;
     } else if (day == 3) {
       var ttgetter = await coll
-          .find(where.eq('Day', 'Wednesday').and(where.eq('Department', dept)))
+          .find(where
+              .eq('Day', 'Wednesday')
+              .fields(['Subject_and_time']).excludeFields(['_id']).and(
+                  where.eq('Department', dept)))
           .toList();
       return ttgetter;
     } else if (day == 4) {
       var ttgetter = await coll
-          .find(where.eq('Day', 'Thursday').and(where.eq('Department', dept)))
+          .find(where
+              .eq('Day', 'Thursday')
+              .fields(['Subject_and_time']).excludeFields(['_id']).and(
+                  where.eq('Department', dept)))
           .toList();
       return ttgetter;
     } else {
       var ttgetter = await coll
-          .find(where.eq('Day', 'Friday').and(where.eq('Department', dept)))
+          .find(where
+              .eq('Day', 'Friday')
+              .fields(['Subject_and_time']).excludeFields(['_id']).and(
+                  where.eq('Department', dept)))
           .toList();
       return ttgetter;
     }
