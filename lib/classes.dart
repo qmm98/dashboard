@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loginapp/dashboard.dart';
+import 'package:loginapp/feedback.dart';
 import 'package:loginapp/notifications.dart';
 import 'dashboard.dart';
 import 'notifications.dart';
@@ -102,7 +103,7 @@ class _NotafloState extends State<Classes2> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Classes2()),
+                  MaterialPageRoute(builder: (context) => const Feedbacks()),
                 );
               },
             ),
@@ -260,7 +261,7 @@ class _NotafloState extends State<Classes2> {
             child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                margin: const EdgeInsets.only(top: 210, bottom: 15),
+                margin: const EdgeInsets.only(top: 230, bottom: 15),
                 decoration: BoxDecoration(
                   color: const Color(0x95282828),
                   borderRadius: BorderRadius.circular(50),
