@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loginapp/classes.dart';
+import 'package:loginapp/feedback.dart';
 import 'package:loginapp/notifications.dart';
 
 class Dashboard extends StatefulWidget {
@@ -89,7 +90,7 @@ class _NotafloState extends State<Dashboard> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Classes2()),
+                  MaterialPageRoute(builder: (context) => const Feedbacks()),
                 );
               },
             ),

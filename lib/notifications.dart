@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loginapp/classes.dart';
 import 'package:loginapp/dashboard.dart';
+import 'package:loginapp/feedback.dart';
 import 'dashboard.dart';
 
 class Notaflo extends StatefulWidget {
@@ -90,7 +91,7 @@ class _NotafloState extends State<Notaflo> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Classes2()),
+                  MaterialPageRoute(builder: (context) => const Feedbacks()),
                 );
               },
             ),
